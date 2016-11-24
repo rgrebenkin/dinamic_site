@@ -6,7 +6,7 @@ class QuestionManager(models.Manager):
   def new(self):
     return self.orderby('-added_at').all()
   
-  def popolar(self):
+  def popular(self):
     return self.orderby('-rating').all()
 
 class Question(models.Model):
