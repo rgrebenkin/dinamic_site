@@ -8,16 +8,6 @@ class QuestionManager(models.Manager):
   
   def popolar(self):
     return self.orderby('-rating').all()
-  
-class Likes(models.Model):
-    question = models.ForeignKey(
-        Question,
-        related_name="like_question"
-    )
-    user = models.ForeignKey(
-        User,
-        related_name="like_user"
-    )  
 
 class Question(models.Model):
   title = models.CharField(max_length=255)
@@ -28,6 +18,16 @@ class Question(models.Model):
   likes = models.ManyToManyField(User, through="Likes")
   objects = QuestionManager()
 
+  
+class Likes(models.Model):
+    question = models.ForeignKey(
+        Question,
+        related_name="like_question"
+    )
+    user = models.ForeignKey(
+        User,
+        related_name="like_user"
+    )  
 
   
 class Answer(models.Model):
