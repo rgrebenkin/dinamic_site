@@ -15,8 +15,8 @@ class Question(models.Model):
   text = models.TextField()
   added_at = models.DateField()
   rating = models.FloatField()
-  author = models.ForeignKey(User)
-  likes = models.ForeignKey(User)
+  author = models.ForeignKey(User, default='x')
+  likes = models.ForeignKey(User, default='x')
   objects = QuestionManager()
 
 
@@ -25,4 +25,4 @@ class Answer(models.Model):
   text = models.TextField()
   added_at = models.DateField()
   question = models.ForeignKey(Question)
-  author = models.ForeignKey(User)
+  author = models.ForeignKey(User, default='x')
