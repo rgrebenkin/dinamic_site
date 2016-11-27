@@ -1,0 +1,10 @@
+<h1>{{ question.title}}</h1>
+<br>
+{{ question.text }}
+<br>
+Ответы:<br>
+<ul>
+{% for answer in answers %}
+  {{ answer.text }}
+{% endfor %}
+</ul>
