@@ -19,6 +19,12 @@ class Question(models.Model):
   #likes = models.ManyToManyField(User, through="Likes")
   likes = models.ManyToManyField(User)
   objects = QuestionManager()
+  
+  def __unicode__(self) :
+    return self.title
+  
+  def get_url(self):
+    return reverse('question', kwargs = { 'id': self.id })  
 
   
 #class Likes(models.Model):
@@ -38,3 +44,6 @@ class Answer(models.Model):
   question = models.ForeignKey(Question)
   author = models.ForeignKey(User)
   #author = models.CharField(max_length=255)
+  
+  def __unicode__(self):
+    return self.text
